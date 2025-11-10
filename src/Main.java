@@ -93,25 +93,26 @@ public class Main {
     public static boolean movimientojugador(char direccion, String [][] campodebatalla, int filasmp, int columnasmp,boolean movimiento){
         if (direccion=='w' || direccion=='W'){
             for(int i = 0; i<filasmp;i++){
-                for(int j=0;j<columnasmp;j++)
-                    if (campodebatalla[i][j]=="J"){
-                        if (i==0){
+                for(int j=0;j<columnasmp;j++) {
+                    if (campodebatalla[i][j] == "J") {
+                        if (i == 0) {
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
                             movimiento = false;
                             break;
 
                         }
-                        campodebatalla[i-1][j] = "J";
+                        campodebatalla[i - 1][j] = "J";
                         campodebatalla[i][j] = ".";
                         movimiento = true;
                         break;
                     }
+                }
             }
         } else if (direccion=='s'|| direccion=='S') {
             for (int i = 0; i<filasmp-1;i++){
-                for(int j=0;j<columnasmp;j++)
-                    if (campodebatalla[i][j]=="J"){
-                        if (i==filasmp){
+                for(int j=0;j<columnasmp;j++) {
+                    if (campodebatalla[i][j] == "J") {
+                        if (i == filasmp) {
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
                             movimiento = false;
                             break;
@@ -122,11 +123,12 @@ public class Main {
                         movimiento = true;
                         break;
                     }
+                }
             }
 
         } else if (direccion == 'a' || direccion  == 'A') {
             for (int i = 0; i<filasmp;i++){
-                for(int j=0;j<columnasmp;j++)
+                for(int j=0;j<columnasmp;j++){
                     if (campodebatalla[i][j]=="J"){
                         if (j==0){
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
@@ -139,24 +141,26 @@ public class Main {
                         movimiento = true;
                         break;
                     }
+                }
             }
 
 
         } else if (direccion == 'd' || direccion== 'D') {
             for (int i = 0; i<filasmp;i++){
-                for(int j=0;j<columnasmp;j++)
-                    if (campodebatalla[i][j]=="J"){
-                        if (j==columnasmp){
+                for(int j=0;j<columnasmp;j++) {
+                    if (campodebatalla[i][j] == "J") {
+                        if (j == columnasmp - 1) {
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
                             movimiento = false;
                             break;
 
                         }
-                        campodebatalla[i][j+1] = "J";
+                        campodebatalla[i][j + 1] = "J";
                         campodebatalla[i][j] = ".";
                         movimiento = true;
                         break;
                     }
+                }
             }
 
 
