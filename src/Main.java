@@ -117,17 +117,19 @@ public class Main {
                         break;
                     }
                     if (campodebatalla[i][j] == "J") {
-                        if (i == filasmp ) {
+                        if (i == filasmp-1 ) {
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
                             movimiento = false;
                             break;
 
+                        }else {
+                            campodebatalla[i+1][j] = "J";
+                            campodebatalla[i][j] = ".";
+                            movimiento = true;
+                            cambio = true ;
+                            break;
                         }
-                        campodebatalla[i+1][j] = "J";
-                        campodebatalla[i][j] = ".";
-                        movimiento = true;
-                        cambio = true ;
-                        break;
+
 
                     }
 
