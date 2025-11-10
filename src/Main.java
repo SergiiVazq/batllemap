@@ -23,25 +23,33 @@ public class Main {
                 campo[i][j] = "." ;
             }
         }
-        campo[rand.nextInt(0,filas)][rand.nextInt(0,columnas)] = "j";
+        campo[rand.nextInt(0,filas)][rand.nextInt(0,columnas)] = "J";
         campo[rand.nextInt(0,filas)][rand.nextInt(0,columnas)] = "E";
 
         actualizacion(vidaJ,vidaE,campo,filas,columnas);
         String mientrada = entrada.next();
 
         char movimiento = mientrada.charAt(0);
-        while (movimiento!='w' && movimiento!='W' && movimiento!='S' && movimiento!='s' && movimiento!='E' && movimiento!='e' && movimiento!='o' && movimiento!='O'){
+        while (movimiento!='w' && movimiento!='W' && movimiento!='S' && movimiento!='s' && movimiento!='A' && movimiento!='a' && movimiento!='D' && movimiento!='d'){
             System.out.print("Error introduce un Valor valido de direccion: ");
             mientrada = entrada.next();
             movimiento = mientrada.charAt(0);
         }
-        /*switch (movimiento){
-            case
-        }*/
+        if (movimiento=='w' || movimiento =='W'){
+            movimientojugador(movimiento,campo,filas,columnas);
+            actualizacion(vidaJ,vidaE,campo,filas,columnas);
+
+        } else if (movimiento=='a' || movimiento=='A') {
+            movimientojugador(movimiento,campo,filas,columnas);
+
+        } else if (movimiento=='s' || movimiento=='S') {
+            movimientojugador(movimiento,campo,filas,columnas);
 
 
+        }else {
+            movimientojugador(movimiento,campo,filas,columnas);
 
-
+        }
 
 
     }
@@ -60,6 +68,19 @@ public class Main {
         System.out.print( "\nVIDA DE J ==> " + x);
         System.out.print("\nVIDA DE ENEMIGO ==> "+y);
         System.out.print("\n J es tu posicion y E es el enemigo teclea W(NORTE), S(SUR), A(OESTE) o D(ESTE) para intentar atraparlo");
+
+    }
+    public static void movimientojugador(char direccion, String [][] campodebatalla, int filasmp, int columnasmp){
+        if (direccion=='w' || direccion=='W'){
+            for(int i = 0; i<filasmp;i++){
+                for(int j=0;j<columnasmp;j++)
+                    if (campodebatalla[i][j]=="J"){
+                        campodebatalla[i-1][j] = "J";
+                        campodebatalla[i][j] = ".";
+                        break;
+                    }
+            }
+        }
 
     }
 
