@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         int vidaJ = 3;
         int vidaE = 3;
+
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("Introduce cuantas filas y columnas tiene el campo de batalla");
@@ -29,34 +30,49 @@ public class Main {
         actualizacion(vidaJ, vidaE, campo, filas, columnas);
         do {
             boolean semueve= false;
+            int opcion = menushort();
 
-            char movimiento = pedirmovimiento();
 
-            if (movimiento == 'w' || movimiento == 'W') {
-                semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
-                if (semueve){
-                    actualizacion(vidaJ, vidaE, campo, filas, columnas);
-                }
+            switch (opcion){
+                case 1 :
+                    char movimiento = pedirmovimiento();
+                    if (movimiento == 'w' || movimiento == 'W') {
+                        semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
+                        if (semueve){
+                            actualizacion(vidaJ, vidaE, campo, filas, columnas);
+                        }
 
-            } else if (movimiento == 'a' || movimiento == 'A') {
-                semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
-                if (semueve){
-                    actualizacion(vidaJ, vidaE, campo, filas, columnas);
-                }
+                    } else if (movimiento == 'a' || movimiento == 'A') {
+                        semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
+                        if (semueve){
+                            actualizacion(vidaJ, vidaE, campo, filas, columnas);
+                        }
 
-            } else if (movimiento == 's' || movimiento == 'S') {
-                semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
-                if (semueve){
-                    actualizacion(vidaJ, vidaE, campo, filas, columnas);;
-                }
+                    } else if (movimiento == 's' || movimiento == 'S') {
+                        semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
+                        if (semueve){
+                            actualizacion(vidaJ, vidaE, campo, filas, columnas);;
+                        }
 
-            } else {
-                semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
-                if (semueve){
-                    actualizacion(vidaJ, vidaE, campo, filas, columnas);;
-                }
+                    } else {
+                        semueve = movimientojugador(movimiento, campo, filas, columnas, semueve);
+                        if (semueve){
+                            actualizacion(vidaJ, vidaE, campo, filas, columnas);;
+                        }
 
+                    }
+                    break;
+                case 2 :
+                    System.out.print("\n En que direccion quieres disparar? (wasd):");
+                    char disparo = pedirdisparo();
+                    
+
+
+
+                    break;
             }
+
+
 
 
         }while (vidaE >0 || vidaJ >0);
@@ -73,10 +89,26 @@ public class Main {
                 }
             }
         }
+        System.out.print("\n ======================\n");
         System.out.print( "\nVIDA DE J ==> " + x);
         System.out.print("\nVIDA DE ENEMIGO ==> "+y);
-        System.out.print("\n J es tu posicion y E es el enemigo teclea W(NORTE), S(SUR), A(OESTE) o D(ESTE) para intentar atraparlo");
+        System.out.print("\n J es tu posicion y E es el enemigo teclea W(NORTE), S(SUR), A(OESTE) o D(ESTE) para intentar atraparlo o dispara\n");
 
+
+    }
+    public static int menushort(){
+        Scanner menu = new Scanner(System.in);
+        System.out.print("\n ======================\n");
+        System.out.print("\nPULSA 1 PARA MOVERTE");
+        System.out.print("\nPULSA 2 PARA DISPARAR");
+
+        int opcion = menu.nextInt();
+        while (opcion!=1 && opcion!=2){
+            System.out.print("\nError introduce un numero valido");
+            opcion = menu.nextInt();
+
+        }
+        return opcion;
     }
     public static char pedirmovimiento (){
         Scanner mov = new Scanner(System.in);
@@ -191,6 +223,18 @@ public class Main {
         }
         return movimiento;
 
+    }
+    public static char pedirdisparo (){
+        Scanner mov = new Scanner(System.in);
+        System.out.print("\n DISPARO WASD : ");
+        String movimientomap = mov.nextLine();
+        char disparo = movimientomap.charAt(0);
+        while (disparo != 'w' && disparo != 'W' && disparo != 'S' && disparo != 's' && disparo != 'A' && disparo != 'a' && disparo != 'D' && disparo != 'd'){
+            System.out.print("Dato incorrecto introduce bien la direccion del disparo: ");
+            movimientomap = mov.nextLine();
+            disparo = movimientomap.charAt(0);
+        }
+        return disparo;
     }
 
 }
