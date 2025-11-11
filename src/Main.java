@@ -100,6 +100,10 @@ public class Main {
                             movimiento = false;
                             break;
 
+                        } else if (campodebatalla[i-1][j]== "E") {
+                            System.out.print("El jugador no puede avanzar a esa posicion por que se encuentra el enemigo en ella");
+                            break;
+
                         }
                         campodebatalla[i - 1][j] = "J";
                         campodebatalla[i][j] = ".";
@@ -122,7 +126,10 @@ public class Main {
                             movimiento = false;
                             break;
 
-                        }else {
+                        }else if (campodebatalla[i+1][j]== "E"){
+                            System.out.print("El jugador no puede avanzar a esa posicion por que se encuentra el enemigo en ella");
+                            break;
+                        } else {
                             campodebatalla[i+1][j] = "J";
                             campodebatalla[i][j] = ".";
                             movimiento = true;
@@ -145,6 +152,9 @@ public class Main {
                             movimiento = false;
                             break;
 
+                        } else if (campodebatalla[i][j-1] == "E"){
+                            System.out.print("El jugador no puede avanzar a esa posicion por que se encuentra el enemigo en ella");
+                            break;
                         }
                         campodebatalla[i][j-1] = "J";
                         campodebatalla[i][j] = ".";
@@ -162,6 +172,10 @@ public class Main {
                         if (j == columnasmp - 1) {
                             System.out.print("El jugador no puede avanzar a esa posicion por que sandria fuera del mapa elije otra opcion");
                             movimiento = false;
+                            break;
+
+                        } else if (campodebatalla[i][j+1]== "E") {
+                            System.out.print("El jugador no puede avanzar a esa posicion por que se encuentra el enemigo en ella");
                             break;
 
                         }
