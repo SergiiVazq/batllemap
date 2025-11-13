@@ -23,6 +23,12 @@ public class Main {
         int columnas = entrada.nextInt();
         System.out.println(" cuantos enemigos hay ? :");
         int enemigos = entrada.nextInt();
+        System.out.println("INTRODUCE EL NIVEL DE DIFICULTAD:");
+        System.out.println("1- FACIL");
+        System.out.println("2- MEDIO");
+        System.out.println("3- DIFICIL");
+        int dificultad = entrada.nextInt();
+
 
         String[][] campo = new String[filas][columnas];
         Random rand = new Random();
